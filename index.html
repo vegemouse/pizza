@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/scripts.js"></script>
+    <meta charset="utf-8">
+    <title>Order Pizza</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Order a Pizza</h1>
+      </div>
+      <div class="row">
+        <div class="col-sm-6" id="order">
+          <form id="order-form">
+            <div class="form-group">
+              <label for="size">Size</label>
+              <select class="form-control" id="size">
+                <option value="none">Select a size</option>
+                <option value="Large">Large ($12.00)</option>
+                <option value="Medium">Medium ($10.00)</option>
+                <option value="Small">Small ($8.00)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="crust">Crust</label>
+              <select class="form-control" id="crust">
+                <option value="none">Select a crust type</option>
+                <option value="regular">Regular</option>
+                <option value="Gluten Free">Gluten Free (+$2.00)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cheese">Cheese</label>
+              <select class="form-control" id="cheese">
+                <option value="none">Select a cheese</option>
+                <option value="Mozzarella">Mozzarella</option>
+                <option value="Vegan Daya Cheese">Vegan Daya Cheese (+$2.00)</option>
+              </select>
+            </div>
+            <div class="row form-group">
+              <div class="form-group col-sm-6">
+                <label>
+                  Veggie Toppings<br>
+                  (+$0.50 each)
+                </label><br>
+                <input type="checkbox" name="veggieToppings" value="Kalamata Olives">Kalamata Olives<br>
+                <input type="checkbox" name="veggieToppings" value="Mushrooms">Mushrooms<br>
+                <input type="checkbox" name="veggieToppings" value="Red Peppers">Red Peppers<br>
+                <input type="checkbox" name="veggieToppings" value="Pineapple">Pineapple<br>
+                <input type="checkbox" name="veggieToppings" value="Spinach">Spinach<br>
+                <input type="checkbox" name="veggieToppings" value="Tomato">Tomato<br>
+                <input type="checkbox" name="veggieToppings" value="Onions">Onions<br>
+                <input type="checkbox" name="veggieToppings" value="Banana Peppers">Banana Peppers<br>
+              </div>
+              <div class="form-group col-sm-6">
+                <label>
+                  Meat Toppings<br>
+                  (+$1.00 each)
+                </label><br>
+                <input type="checkbox" name="meatToppings" value="Pepperoni">Pepperoni<br>
+                <input type="checkbox" name="meatToppings" value="Sausage">Sausage<br>
+                <input type="checkbox" name="meatToppings" value="Ham">Ham<br>
+                <input type="checkbox" name="meatToppings" value="Chicken">Chicken<br>
+                <input type="checkbox" name="meatToppings" value="Vegan Sausage">Vegan Sausage<br>
+                <input type="checkbox" name="meatToppings" value="Vegan Pepperoni">Vegan Pepperoni
+              </div>
+            </div>
+            <div class="form-control row">
+              <p>Delivery or Pickup?</p>
+              <label class="col-sm-6">
+                <input type="radio" name="delivery" value="Pickup" checked>
+                Pickup
+              </label>
+              <label class="col-sm-6">
+                <input type="radio" name="delivery" value="Delivery">
+                Delivery (+$3.00)
+              </label>
+            </div><br>
+            <button type="submit" class="btn btn-primary">Next</button>
+          </form>
+        </div>
+        <div class="col-sm-6">
+          <div id="showOrder">
+            <h2>Order Summary</h2>
+            <p>Please carefully review the details of your pizza</p>
+            <p><strong>Size:</strong> <span class="size"></span></p>
+            <p><strong>Crust:</strong> <span class="crust"></span></p>
+            <p><strong>Cheese:</strong> <span class="cheese"></span></p>
+            <p><strong>Veggie Toppings:</strong> <ul><span class="veggieToppings"></span></ul></p>
+            <p><strong>Meat Toppings:</strong> <ul><span class="meatToppings"></span></ul></p>
+            <p><strong>Delivery or Pickup?:</strong> <span class="delivery"></span></p>
+            <p id="total"><strong>Total:</strong> $<span class="price"></span></p>
+
+            <div id="delivery">
+              <h3>Delivery Information</h3>
+              <div class="form-control">
+                <label for="addressOne"><strong>Address 1:</strong></label><br>
+                <input id="addressOne" type="text" placeholder="123 Pizza Street"></input>
+              </div>
+            </div>
+            <button id="orderButton" class="btn btn-primary">Next</button>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>
