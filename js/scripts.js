@@ -1,51 +1,55 @@
-  function Pizza(size, crust, cheese, veggieToppings, meatToppings, delivery, price) {
-    this.size = size;
-    this.crust = crust;
-    this.cheese = cheese;
-    this.veggieToppings = veggieToppings;
-    this.meatToppings = meatToppings;
-    this.delivery = delivery;
-    this.price = 0;
-  }
+function Pizza(size, crust, cheese, veggieToppings, meatToppings, delivery, price) {
+  this.size = size;
+  this.crust = crust;
+  this.cheese = cheese;
+  this.veggieToppings = veggieToppings;
+  this.meatToppings = meatToppings;
+  this.delivery = delivery;
+  this.price = 0;
+}
 
-  var createPizza = function(size, crust, cheese, veggieToppings, meatToppings, delivery, price) {
-    var newPizza = new Pizza(size, crust, cheese, veggieToppings, meatToppings, delivery, price);
-    return newPizza;
-  }
+var yourPizza;
 
-  Pizza.prototype.calculatePrice = function() {
-    if (this.size === "Large") {
-      this.price += 12;
-    } else if (this.size === "Medium") {
-      this.price += 10;
-    } else if (this.size === "Small") {
-      this.price += 8;
-    }
-    if (this.crust === "Gluten Free") {
-      this.price += 2;
-    }
-    if (this.cheese === "Vegan Daya Cheese") {
-      this.price += 2;
-    }
-    for (var i = 0; i < this.veggieToppings.length; i++) {
-      this.price += 0.5;
-    }
-    for (var i = 0; i < this.meatToppings.length; i++) {
-      this.price += 1;
-    }
-    if (this.delivery === "Delivery") {
-      this.price += 3;
-    }
-    return this.price;
-  }
+var createPizza = function(size, crust, cheese, veggieToppings, meatToppings, delivery, price) {
+  var newPizza = new Pizza(size, crust, cheese, veggieToppings, meatToppings, delivery, price);
+  return newPizza;
+}
 
-  $(function() {
-    $("#order-form").submit(function(event) {
-      event.preventDefault();
-      var inputtedSize = $("#size").val();
-      var inputtedCrust = $("#crust").val();
-      var inputtedCheese = $("#cheese").val();
-      var inputtedVeggieToppings = [];
+Pizza.prototype.calculatePrice = function() {
+  if (this.size === "Large") {
+    this.price += 12;
+  } else if (this.size === "Medium") {
+    this.price += 10;
+  } else if (this.size === "Small") {
+    this.price += 8;
+  }
+  if (this.crust === "Gluten Free") {
+    this.price += 2;
+  }
+  if (this.cheese === "Vegan Daya Cheese") {
+    this.price += 2;
+  }
+  for (var i = 0; i < this.veggieToppings.length; i++) {
+    this.price += 0.5;
+  }
+  for (var i = 0; i < this.meatToppings.length; i++) {
+    this.price += 1;
+  }
+  if (this.delivery === "Delivery") {
+    this.price += 3;
+  }
+  return this.price.toFixed(2);
+}
+
+$(function() {
+  $("#order-form").submit(function(event) {
+    event.preventDefault();
+    var inputtedSize = $("#size").val();
+    var inputtedCrust = $("#crust").val();
+    var inputtedCheese = $("#cheese").val();
+    var inputtedVeggieToppings = [];
+
+    if (inputtedSize !== "none" && inputtedCrust !== "none" && inputtedCheese !== "none") {
       $("input:checkbox[name=veggieToppings]:checked").each(function() {
         inputtedVeggieToppings.push($(this).val());
       });
@@ -54,8 +58,8 @@
         inputtedMeatToppings.push($(this).val());
       });
       var inputtedDelivery = $("input:radio[name=delivery]:checked").val();
-      var yourPizza = createPizza(inputtedSize, inputtedCrust, inputtedCheese, inputtedVeggieToppings, inputtedMeatToppings, inputtedDelivery);
-      var yourPrice = yourPizza.calculatePrice().toFixed(2);
+      yourPizza = createPizza(inputtedSize, inputtedCrust, inputtedCheese, inputtedVeggieToppings, inputtedMeatToppings, inputtedDelivery);
+      var yourPrice = yourPizza.calculatePrice();
       $(".size").html(inputtedSize);
       $(".crust").html(inputtedCrust);
       $(".cheese").html(inputtedCheese);
@@ -69,13 +73,40 @@
       }
       $(".delivery").html(inputtedDelivery.charAt(0).toUpperCase() + inputtedDelivery.slice(1));
       $(".price").html(yourPrice);
+      if (yourPizza.delivery === "Delivery") {
+        $("#showDelivery").show();
+      }
       $("#showOrder").fadeIn();
-    })
-
-    $("#orderButton").click(function() {
-      
-    })
-
-
-
+      $("body").animate({ scrollTop: $("#showOrder").offset().top }, 500);
+    } else {
+      alert("Please fill out all fields");
+    }
   })
+
+  $("#orderButton").click(function() {
+    if (yourPizza.delivery === "Delivery") {
+      var inputtedAddressOne = $("#addressOne").val();
+      var inputtedAddressTwo = $("#addressTwo").val();
+      var inputtedCity = $("#city").val();
+      var inputtedState = $("#state").val();
+      var inputtedZip = $("#zip").val();
+
+      if (inputtedAddressOne !== "" && inputtedCity !== "" && inputtedZip !== "") {
+        $(".addressOne").text(inputtedAddressOne);
+        $(".addressTwo").text(inputtedAddressTwo);
+        $(".city").text(inputtedCity);
+        $(".state").text(inputtedState);
+        $(".zip").text(inputtedZip);
+        $("#confirmationDelivery").fadeIn();
+      } else {
+        alert("Please fill out all required fields");
+      }
+    } else {
+      $("#confirmation").fadeIn();
+    }
+  })
+
+  $(".restart").click(function() {
+    location.reload();
+  })
+})

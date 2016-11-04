@@ -1,3 +1,95 @@
+body {
+  background-color: #fff7ef;
+  font-size: 1.1em;
+  font-family: 'Oswald', sans-serif;
+}
+
+.container {
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+
+.col-sm-6 {
+  padding: 20px;
+}
+
+#showDelivery .form-control label {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+strong {
+  font-size: 1.1em;
+  color: #333;
+}
+
+
+#total {
+  font-size: 1.7em;
+}
+
+.jumbotron {
+  background-image: url("../img/header.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 350px;
+  color: white;
+  text-align: center;
+  padding-top: 120px;
+  text-shadow: 3px 3px 3px black;
+}
+
+.jumbotron h1 {
+  font-size: 7em;
+  letter-spacing: 5px;
+  font-family: 'IM Fell English SC', serif;
+}
+
+h2 {
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.form-control {
+  padding: 20px;
+  background-color: #fffdfc;
+}
+
+
+#showDelivery {
+  margin-top: 20px;
+}
+
+.btn {
+  margin: 10px;
+}
+
 #showOrder {
   display: none;
+}
+
+#showDelivery {
+  display: none;
+}
+
+#confirmationDelivery, #confirmation {
+  display: none;
+  position: fixed;
+  left: 25%;
+  top: 17%;
+  height: 500px;
+  width: 700px;
+  z-index: 10;
+  background-color: #ffead3;
+  box-shadow: 15px 15px 30px #555555;
+  border-radius: 15px;
+  text-align: center;
+}
+
+#confirmationDelivery {
+  padding-top: 120px;
+}
+
+#confirmation {
+  padding-top: 150px;
 }
