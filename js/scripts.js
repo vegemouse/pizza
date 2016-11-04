@@ -76,6 +76,8 @@ $(function() {
       $(".price").html(yourPrice);
       if (yourPizza.delivery === "Delivery") {
         $("#showDelivery").show();
+      } else {
+        $("#showDelivery").hide();
       }
       $("#showOrder").fadeIn();
       $("body").animate({ scrollTop: $("#showOrder").offset().top }, 500);
