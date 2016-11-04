@@ -18,6 +18,7 @@
       <div class="row">
         <div class="col-sm-6" id="order">
           <h2>Customize your Pizza</h2>
+          <span id="requiredCustomize">* Please fill out all fields</span>
           <form id="order-form">
             <div class="form-group">
               <label for="size">Size</label>
@@ -100,6 +101,7 @@
 
             <div id="showDelivery">
               <h2>Delivery Information</h2>
+              <span id="requiredDelivery">* Please fill out all fields</span>
               <div class="form-control">
                 <label for="addressOne"><strong>Address 1:</strong></label><br>
                 <input class="form-control" id="addressOne" type="text" placeholder="Required"></input>
@@ -170,6 +172,7 @@
         </div>
         <div id="confirmationDelivery">
           <h2>Your order has been completed</h2>
+          <img src="img/confirmation.gif" alt="confirmation cat!" width="200px" class="img-center">
           <p>Your pizza will be delivered to the following address:</p>
           <p>
             <span class="addressOne"></span><br>
@@ -181,6 +184,7 @@
         </div>
         <div id="confirmation">
           <h2>Your order has been completed</h2>
+          <img src="img/confirmation.gif" alt="confirmation cat!" width="200px" class="img-center">
           <p>You will receive a confirmation phone call confirming your order. Enjoy your pizza!</p>
           <button class="restart btn btn-primary">Order Another</button>
         </div>

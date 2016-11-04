@@ -42,6 +42,7 @@ Pizza.prototype.calculatePrice = function() {
 }
 
 $(function() {
+  $("body").animate({ scrollTop: $(".jumbotron").offset().top }, 10);
   $("#order-form").submit(function(event) {
     event.preventDefault();
     var inputtedSize = $("#size").val();
@@ -78,8 +79,11 @@ $(function() {
       }
       $("#showOrder").fadeIn();
       $("body").animate({ scrollTop: $("#showOrder").offset().top }, 500);
+      $("#requiredCustomize").hide();
     } else {
-      alert("Please fill out all fields");
+      $("#requiredCustomize").show();
+      $("body").animate({ scrollTop: $("#requiredCustomize").offset().top }, 500);
+
     }
   })
 
@@ -98,8 +102,10 @@ $(function() {
         $(".state").text(inputtedState);
         $(".zip").text(inputtedZip);
         $("#confirmationDelivery").fadeIn();
+        $("#requiredDelivery").hide();
       } else {
-        alert("Please fill out all required fields");
+        $("#requiredDelivery").show();
+        $("body").animate({ scrollTop: $("#requiredDelivery").offset().top }, 500);
       }
     } else {
       $("#confirmation").fadeIn();
